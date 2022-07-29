@@ -29,7 +29,7 @@ _1. 在kali环境下配置openssl证书内容_
 
     e默认是65537
 
-![Alt](img\img.png)
+![Alt](img/img.png)
 
 生成自签名CA证书：
 
@@ -45,24 +45,24 @@ _1. 在kali环境下配置openssl证书内容_
     
     -subj 参数指定证书信息，避免在终端逐个输入
 
-![Alt](img\img_1.png)
+![Alt](img/img_1.png)
 
 
 生成服务器私钥：
 
-![Alt](img\img_3.png)
+![Alt](img/img_3.png)
 
 生成要颁发证书的证书签名请求：
 
-![Alt](img\img_4.png)
+![Alt](img/img_4.png)
     
 用第2步创建的 CA 证书给第4步生成的签名请求进行签名，表明该证书请求已被CA信任，得到一个被CA签名过的证书：
    
-![Alt](img\img_5.png) 
+![Alt](img/img_5.png) 
 
 客户端用CA证书来对服务端被CA签名过的证书来进行认证：
 
-![Alt](img\img_6.png)
+![Alt](img/img_6.png)
     
 结果是签名验证成功
     
@@ -73,15 +73,15 @@ _1. 在kali环境下配置openssl证书内容_
     Subject:
     拥有证书的网站信息
 
-![Alt](img\img_7.png)
+![Alt](img/img_7.png)
 
 查看证书里的公钥信息：
 
-![Alt](img\img_8.png)
+![Alt](img/img_8.png)
 
 查看数字签名：
 
-![Alt](img\img_9.png)
+![Alt](img/img_9.png)
 
 _2. 编写代码实现SSL通信_
 
@@ -92,48 +92,48 @@ _2. 编写代码实现SSL通信_
 对连接的另一方的证书进行验证，客户端必须提供一个 “CA 证书” 文件，即CA机构的公钥，用这个公钥去验证被CA机构的颁发的目标网站的证书，这个证书相当于被CA机构的私钥签名过。
 
     Server
-![Alt](img\img_10.png)
+![Alt](img/img_10.png)
 
     Client
-![Alt](img\img_11.png)
+![Alt](img/img_11.png)
 
 所以如果通过验证，则表明该网站被CA信任，那么客户端就可以相信它。
 
 
 创建套接字及绑定地址进行监听：
 
-![Alt](img\img_12.png)
+![Alt](img/img_12.png)
 
 客户端返回的 SSL 套接字会绑定上下文、设置以及证书：
 
-![Alt](img\img_13.png)
+![Alt](img/img_13.png)
 
 服务端包装一个现有的 Python socket,并返回一个ssl socket,server_side为true表示为服务器行为，默认为false则表示客户端：
 
-![Alt](img\img_14.png)
+![Alt](img/img_14.png)
 
 服务端接收消息：
 
-![Alt](img\img_16.png)
+![Alt](img/img_16.png)
 
 客户端连接服务器：
 
-![Alt](img\img_15.png)
+![Alt](img/img_15.png)
 
 先打印证书信息：
 
-![Alt](img\img_17.png)
+![Alt](img/img_17.png)
 
 连接上服务器后进行消息传输：
 
-![Alt](img\img_18.png)
+![Alt](img/img_18.png)
 
 
 
 **Main.py**
 
 负责整合服务端和客户端的内容，进行封装：
-![Alt](img\img_19.png)
+![Alt](img/img_19.png)
 
 实现在main.py调用server和client的所有功能，进行一键通信。
 
@@ -143,21 +143,21 @@ _2. 编写代码实现SSL通信_
 
 运行server.py首先打开服务端：
 
-![Alt](img\img_20.png)
+![Alt](img/img_20.png)
 
 打开客户端输入发送消息：
 
-![Alt](img\img_21.png)
+![Alt](img/img_21.png)
 
 服务端接收完成：
 
-![Alt](img\img_22.png)
+![Alt](img/img_22.png)
 
 运行main.py
 
 打印出来的证书信息：
 
-![Alt](img\img_23.png)
+![Alt](img/img_23.png)
 
 客户端发送：hello,im,li
 
@@ -169,7 +169,7 @@ Exit退出会话。
 
 整个运行的截图如下所示：
 
-![Alt](img\img_2.png)
+![Alt](img/img_2.png)
 
 
 TODOs:
